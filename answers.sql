@@ -8,7 +8,7 @@ USE LibraryDB;
 
 -- Members table
 CREATE TABLE Members (
-    MemberID AUTO_INCREMENT PRIMARY KEY,
+    MemberID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
     JoinDate DATE NOT NULL
@@ -16,7 +16,7 @@ CREATE TABLE Members (
 
 -- Books table
 CREATE TABLE Books (
-    BookID AUTO_INCREMENT PRIMARY KEY,
+    BookID INT PRIMARY KEY AUTO_INCREMENT,
     Title VARCHAR(200) NOT NULL,
     Author VARCHAR(100) NOT NULL,
     ISBN VARCHAR(20) NOT NULL UNIQUE,
@@ -26,7 +26,7 @@ CREATE TABLE Books (
 
 -- Staff table (One-to-One with Members for staff who are also members)
 CREATE TABLE Staff (
-    StaffID AUTO_INCREMENT PRIMARY KEY,
+    StaffID INT PRIMARY KEY AUTO_INCREMENT,
     MemberID INT UNIQUE,
     Position VARCHAR(50),
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
@@ -34,7 +34,7 @@ CREATE TABLE Staff (
 
 -- Loans table (Many-to-One: Many loans per member, Many loans per book)
 CREATE TABLE Loans (
-    LoanID AUTO_INCREMENT PRIMARY KEY,
+    LoanID INT PRIMARY KEY AUTO_INCREMENT,
     MemberID INT NOT NULL,
     BookID INT NOT NULL,
     LoanDate DATE NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE Loans (
 
 -- Genres table
 CREATE TABLE Genres (
-    GenreID AUTO_INCREMENT PRIMARY KEY,
+    GenreID INT PRIMARY KEY AUTO_INCREMENT,
     GenreName VARCHAR(50) NOT NULL UNIQUE
 );
 
